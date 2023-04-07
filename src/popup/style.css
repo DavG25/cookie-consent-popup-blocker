@@ -1,0 +1,146 @@
+/* Import font */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(./font.woff2) format('woff2');
+}
+
+/* Main body */
+html {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+body {
+  width: 400px;
+  height: auto;
+  margin: 6px;
+  padding: 0;
+  font-family: 'Roboto', Tahoma, sans-serif;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 350ms linear;
+}
+
+/* Content container */
+.container {
+  width: 95%;
+  margin: auto;
+  text-align: center;
+}
+
+/* Text and links */
+p, a {
+  line-height: 1.035 !important;
+}
+
+/* Header */
+#header {
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+#header.success {
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Warning message */
+#warningMessage {
+  font-size: 14px;
+  margin-left: 12%;
+  margin-right: 12%;
+  margin-top: 0px;
+  margin-bottom: 12px;
+}
+#warningMessage.show {
+  display: block;
+}
+#warningMessage.hide {
+  display: none;
+}
+
+/* Clickable message */
+#clickableMessage {
+  font-size: 14px;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 0px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+#clickableMessage.show {
+  display: block;
+}
+#clickableMessage.hide {
+  display: none;
+}
+
+/* Colors for dark theme */
+@media (prefers-color-scheme: dark) {
+  /* Popup body */
+  body {
+    background-color: hsl(240, 8%, 15%);
+    border: 1px solid hsl(206, 6%, 25%);
+  }
+  /* Popup header */
+  #header {
+    color: hsl(0, 0%, 100%);
+  }
+  #header.success {
+    color: hsl(141, 71%, 50%);
+  }
+  #header.warning {
+    color: hsl(355, 97%, 63%);
+  }
+  /* Warning message */
+  #warningMessage {
+    color: hsl(0, 0%, 90%);
+  }
+  /* Clickable message */
+  #clickableMessage {
+    color: hsl(0, 0%, 90%);
+  }
+  #clickableMessage:hover {
+    color: hsl(0, 0%, 80%);
+  }
+}
+
+/* Colors for light theme */
+@media (prefers-color-scheme: light) {
+  /* Popup body */
+  body {
+    background-color: hsl(0, 0%, 98%);;
+    border: 1px solid hsl(0, 0%, 79%);
+  }
+  /* Popup header */
+  #header {
+    color: hsl(0, 0%, 4%);
+  }
+  #header.success {
+    color: hsl(141, 72%, 27%);
+  }
+  #header.warning {
+    color: hsl(341, 80%, 45%);
+  }
+  /* Warning message */
+  #warningMessage {
+    color: hsl(0, 0%, 4%);
+  }
+  /* Clickable message */
+  #clickableMessage {
+    color: hsl(0, 0%, 4%);
+  }
+  #clickableMessage:hover {
+    color: hsl(0, 0%, 33%);
+  }
+}
