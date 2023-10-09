@@ -1,6 +1,6 @@
 {
   "name": "cookie-consent-popup-blocker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Browser extension that blocks “Before you continue” cookie consent popups on Google and YouTube sites",
   "main": "index.js",
   "scripts": {
