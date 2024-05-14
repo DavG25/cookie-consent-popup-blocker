@@ -1,6 +1,6 @@
-# Cookie Consent Popup Blocker
+# Cookie Consent Popup Blocker for Google and YouTube
 
-Cookie Consent Popup Blocker is a browser extension that blocks the “Before you continue” cookie consent popup on Google and YouTube sites, useful when frequently clearing cookies or starting new incognito sessions
+Cookie Consent Popup Blocker is a browser extension that blocks the “Before you continue” cookie consent popup on Google and YouTube, useful when frequently clearing cookies or starting new incognito sessions
 
 This extension is compatible with Chrome, Chromium-based browsers, Firefox (including Firefox Android), and Gecko-based browsers
 
