@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Google & YouTube Cookie Consent Popup Blocker",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "Block “Before you continue” cookie consent popups on Google and YouTube",
     "author": "DavG25",
     "icons": {
