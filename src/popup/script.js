@@ -45,14 +45,13 @@ function updateStatus() {
    * messages in the popup window accordingly
    */
   chrome.permissions.getAll((permissions) => {
-    const hasGoogleDomains = (permissions.origins.filter((origin) => origin.includes('google.'))).length > 0;
-    const hasYouTubeDomains = (permissions.origins.filter((origin) => origin.includes('youtube.'))).length > 0;
-    if ((hasGoogleDomains && !hasYouTubeDomains) || (!hasGoogleDomains && hasYouTubeDomains)) {
-      header.innerHTML = 'Cookie consent popups are blocked only on the selected sites';
-      header.className = 'success';
-      warningMessage.className = 'hide';
-      warningMessage.innerHTML = '';
-    } else if (!hasGoogleDomains && !hasYouTubeDomains) {
+    // Get number of Google and YouTube sites present in the manifest
+    const fullAccess = chrome.runtime.getManifest().permissions.filter((perm) => perm.includes('google.') || perm.includes('youtube.')).length;
+    // Get number of Google and YouTube sites the extension has current access to
+    const currentAccess = permissions?.origins?.filter((perm) => perm.includes('google.') || perm.includes('youtube.')).length;
+
+    if (currentAccess === 0) {
+      // Extension does not have access to any Google or YouTube site
       header.innerHTML = 'Cookie consent popups are not blocked';
       header.className = 'warning';
       clickableMessage.className = 'hide';
@@ -60,7 +59,14 @@ function updateStatus() {
       clickableMessage.innerHTML = '';
       warningMessage.innerHTML = 'Allow access to the desired sites in the extension\'s permissions to resume blocking';
       warningMessage.className = 'show';
-    } else {
+    } else if (currentAccess < fullAccess) {
+      // Extension has access to one or more (but not all) Google or YouTube sites
+      header.innerHTML = 'Cookie consent popups are blocked only on the selected sites';
+      header.className = 'success';
+      warningMessage.className = 'hide';
+      warningMessage.innerHTML = '';
+    } else if (currentAccess === fullAccess) {
+      // Extension has access to all Google and YouTube sites
       header.innerHTML = 'Cookie consent popups are blocked on Google and YouTube';
       header.className = 'success';
       warningMessage.className = 'hide';
