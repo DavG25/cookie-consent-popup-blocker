@@ -26,7 +26,7 @@ function updateStatus() {
    */
   chrome.extension.isAllowedIncognitoAccess((allowed) => {
     if (!allowed) {
-      clickableMessage.innerHTML = 'Learn how to also block cookie consent popups when browsing in incognito';
+      clickableMessage.innerHTML = 'Learn how to also block cookie consent popups when browsing in incognito/private mode';
       clickableMessage.href = `https://www.davg25.com/?cookie-consent-popup-blocker-quickstart!?context=enable-incognito&version=${chrome.runtime.getManifest().version}&browser=${chrome.app ? 'chrome' : 'firefox'}`;
       clickableMessage.className = 'show';
     } else {
@@ -45,7 +45,7 @@ function updateStatus() {
     const hasGoogleDomains = (permissions.origins.filter((origin) => origin.includes('google.'))).length > 0;
     const hasYouTubeDomains = (permissions.origins.filter((origin) => origin.includes('youtube.'))).length > 0;
     if ((hasGoogleDomains && !hasYouTubeDomains) || (!hasGoogleDomains && hasYouTubeDomains)) {
-      header.innerHTML = 'Cookie consent popups are blocked only on allowed sites';
+      header.innerHTML = 'Cookie consent popups are blocked only on the selected sites';
       header.className = 'success';
       warningMessage.className = 'hide';
       warningMessage.innerHTML = '';
