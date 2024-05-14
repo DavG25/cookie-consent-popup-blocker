@@ -7,6 +7,7 @@ import registerBeforeSendHeadersListener from './listeners/webRequestSend';
 import registerHeadersReceivedListener from './listeners/webRequestReceive';
 import registerPermissionsListener from './listeners/permissionsChange';
 import registerInstallListener from './listeners/runtimeInstall';
+import enableUninstallPage from './helpers/uninstallPage';
 
 /**
  * Set current extension icon
@@ -20,3 +21,8 @@ registerBeforeSendHeadersListener(chrome, state);
 registerHeadersReceivedListener(chrome, state);
 registerPermissionsListener();
 registerInstallListener(state);
+
+/**
+ * Enable uninstall feedback page
+ */
+enableUninstallPage(state);
