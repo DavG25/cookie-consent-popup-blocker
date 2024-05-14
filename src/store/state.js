@@ -1,7 +1,7 @@
 import {
   googleDomains, youtubeDomains, manifestUrls,
 } from './domains';
-import { consentInt, expirationDate } from '../helpers/cookie';
+import { expirationDate } from '../helpers/cookie';
 
 /**
  * Build state
@@ -11,17 +11,6 @@ export default {
   cookies: [
     {
       validDomains: googleDomains, // Array of domains compatible with this cookie
-      validRegex: /\+\d+/, // Regex to check against to consider the cookie valid
-      name: 'CONSENT',
-      value: `PENDING+${consentInt}`,
-      expirationDate,
-      httpOnly: false,
-      path: '/',
-      sameSite: 'no_restriction',
-      secure: true,
-    },
-    {
-      validDomains: googleDomains, // Array of domains compatible with this cookie
       validRegex: /^C.*/, // Regex to check against to consider the cookie valid
       name: 'SOCS',
       value: 'CAESHAgBEhJnd3NfMjAyNDA1MDgtMF9SQzEaAmVuIAEaBgiA04qyBg', // Equals to 'Reject all'
@@ -29,17 +18,6 @@ export default {
       httpOnly: false,
       path: '/',
       sameSite: 'lax',
-      secure: true,
-    },
-    {
-      validDomains: youtubeDomains, // Array of domains compatible with this cookie
-      validRegex: /\+\d+/, // Regex to check against to consider the cookie valid
-      name: 'CONSENT',
-      value: `PENDING+${consentInt}`,
-      expirationDate,
-      httpOnly: false,
-      path: '/',
-      sameSite: 'no_restriction',
       secure: true,
     },
     {

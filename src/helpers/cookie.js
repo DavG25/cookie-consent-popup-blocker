@@ -22,11 +22,6 @@ export function objectToHeader(object) {
 }
 
 /**
- * Generate random consent integer value for cookies
- */
-export const consentInt = Math.floor(Math.random() * 799) + 100;
-
-/**
  * Generate expiration date for cookies
  */
 let compiledExpirationDate = new Date();
