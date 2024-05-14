@@ -27,7 +27,10 @@ function updateStatus() {
   chrome.extension.isAllowedIncognitoAccess((allowed) => {
     if (!allowed) {
       clickableMessage.innerHTML = 'Learn how to also block cookie consent popups when browsing in incognito/private mode';
-      clickableMessage.href = `https://www.davg25.com/?cookie-consent-popup-blocker-quickstart!?context=enable-incognito&version=${chrome.runtime.getManifest().version}&browser=${chrome.app ? 'chrome' : 'firefox'}`;
+      const extensionId = encodeURIComponent(chrome.runtime.id);
+      const extensionVersion = encodeURIComponent(chrome.runtime.getManifest().version);
+      const browser = encodeURIComponent(chrome.app ? 'chrome' : 'firefox');
+      clickableMessage.href = `https://www.davg25.com/?cookie-consent-popup-blocker-quickstart!?context=enable-incognito&id=${extensionId}&version=${extensionVersion}&browser=${browser}`;
       clickableMessage.className = 'show';
     } else {
       clickableMessage.className = 'hide';
