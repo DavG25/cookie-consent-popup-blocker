@@ -1,8 +1,9 @@
 /**
- * Register listener to open quick start page on first install
+ * Register listener for extension install event
  */
 export default function register(state) {
   chrome.runtime.onInstalled.addListener((details) => {
+    // Open quick start page on first install
     if (details.reason === 'install') {
       const extensionId = encodeURIComponent(chrome.runtime.id);
       const extensionVersion = encodeURIComponent(chrome.runtime.getManifest().version);

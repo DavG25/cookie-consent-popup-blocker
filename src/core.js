@@ -12,6 +12,9 @@ import registerInstallListener from './listeners/runtimeInstall';
  * Set current extension icon
  */
 updateIcon();
+
+/**
+ * Register event listeners
  */
 registerBeforeSendHeadersListener(chrome, state);
 registerHeadersReceivedListener(chrome, state);
