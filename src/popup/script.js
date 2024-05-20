@@ -19,12 +19,12 @@ clickableMessage.onclick = (event) => {
 /**
  * Dynamically update the text on the popup
  */
-function updateStatus() {
+async function updateStatus() {
   /**
    * Check if extension is allowed in incognito
    * If not allowed, display a message in the popup window
    */
-  chrome.extension.isAllowedIncognitoAccess((allowed) => {
+  await chrome.extension.isAllowedIncognitoAccess((allowed) => {
     if (!allowed) {
       clickableMessage.innerHTML = 'Learn how to also block cookie consent popups when browsing in incognito/private mode';
       const extensionId = encodeURIComponent(chrome.runtime.id);
@@ -44,7 +44,7 @@ function updateStatus() {
    * or YouTube domain and change the header and
    * messages in the popup window accordingly
    */
-  chrome.permissions.getAll((permissions) => {
+  await chrome.permissions.getAll((permissions) => {
     // Get number of Google and YouTube sites present in the manifest
     const fullAccess = chrome.runtime.getManifest().permissions.filter((perm) => perm.includes('google.') || perm.includes('youtube.')).length;
     // Get number of Google and YouTube sites the extension has current access to
