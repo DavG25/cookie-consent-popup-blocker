@@ -52,22 +52,25 @@ function updateStatus() {
 
     if (currentAccess === 0) {
       // Extension does not have access to any Google or YouTube site
-      header.innerHTML = 'Cookie consent popups are not blocked';
+      header.innerHTML = 'Google and YouTube cookie consent popups are not being blocked';
       header.className = 'warning';
       clickableMessage.className = 'hide';
       clickableMessage.href = '';
       clickableMessage.innerHTML = '';
-      warningMessage.innerHTML = 'Allow access to the desired sites in the extension\'s permissions to resume blocking';
+      warningMessage.innerHTML = 'Allow access to the desired sites in the extension permissions to resume blocking';
       warningMessage.className = 'show';
     } else if (currentAccess < fullAccess) {
       // Extension has access to one or more (but not all) Google or YouTube sites
-      header.innerHTML = 'Cookie consent popups are blocked only on the selected sites';
+      header.innerHTML = 'Google and YouTube cookie consent popups are being partially blocked';
       header.className = 'success';
-      warningMessage.className = 'hide';
-      warningMessage.innerHTML = '';
+      clickableMessage.className = 'hide';
+      clickableMessage.href = '';
+      clickableMessage.innerHTML = '';
+      warningMessage.innerHTML = 'Blocking is active only for the selected sites in the extension permissions';
+      warningMessage.className = 'show';
     } else if (currentAccess === fullAccess) {
       // Extension has access to all Google and YouTube sites
-      header.innerHTML = 'Cookie consent popups are blocked on Google and YouTube';
+      header.innerHTML = 'Google and YouTube cookie consent popups are being blocked';
       header.className = 'success';
       warningMessage.className = 'hide';
       warningMessage.innerHTML = '';
