@@ -8,7 +8,7 @@
       "128": "assets/icon128.png"
     },
     "browser_action": {
-      "default_title": "Cookie Consent Popup Blocker for Google and YouTube",
+      "default_title": "Google & YouTube Cookie Consent Popup Blocker",
       "default_popup": "popup/index.html",
       "default_icon": {
         "128": "assets/icon128.png"
