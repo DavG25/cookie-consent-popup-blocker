@@ -1,24 +1,23 @@
 /**
- * Convert the 'Cookie' header to an object
+ * Convert 'Cookie' header to object containing cookies (name: value)
  */
-export function headerToObject(cookies) {
-  return cookies.split('; ').reduce((prev, current) => {
-    const [name, ...value] = current.split('=');
-    prev[name] = value.join('=');
-    return prev;
+export function cookieHeaderToCookieObject(cookies) {
+  return cookies.split('; ').reduce((accumulator, cookie) => {
+    const [name, ...valueParts] = cookie.split('=');
+    // Join the value parts back to handle cases where '=' might be part of the value
+    const value = valueParts.join('=');
+    accumulator[name] = value;
+    return accumulator;
   }, {});
 }
 
 /**
- * Convert an object containing cookies (name: value) to a valid 'Cookie' header
+ * Convert object containing cookies (name: value) to 'Cookie' header
  */
-export function objectToHeader(object) {
-  let header = '';
-  Object.keys(object).forEach((key) => {
-    if (header) header += '; ';
-    header += `${key}=${object[key]}`;
-  });
-  return header;
+export function cookieObjectToCookieHeader(object) {
+  return Object.entries(object)
+    .map(([key, value]) => `${key}=${value}`)
+    .join('; ');
 }
 
 /**

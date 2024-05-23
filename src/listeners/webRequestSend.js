@@ -1,5 +1,4 @@
-import { getRootDomain, getHostnameFromUrl } from '../helpers/hostname';
-import { headerToObject, objectToHeader } from '../helpers/cookie';
+import { cookieHeaderToCookieObject, cookieObjectToCookieHeader } from '../helpers/cookie';
 
 export default function register(chrome, state) {
   /**
@@ -53,7 +52,8 @@ export default function register(chrome, state) {
           /**
            * Header 'Cookie' is present, convert it to an object
            */
-          const cookiesOject = headerToObject(details.requestHeaders[cookieHeaderIndex].value);
+          const cookieHeaderValue = details.requestHeaders[cookieHeaderIndex].value;
+          const cookiesOject = cookieHeaderToCookieObject(cookieHeaderValue);
 
           /**
            * Check if cookies object contains our cookie
@@ -90,7 +90,8 @@ export default function register(chrome, state) {
           /**
            * Convert the cookies object back to a valid 'Cookie' header
            */
-          details.requestHeaders[cookieHeaderIndex].value = objectToHeader(cookiesOject);
+          const cookieHeader = cookieObjectToCookieHeader(cookiesOject);
+          details.requestHeaders[cookieHeaderIndex].value = cookieHeader;
         }
       });
 
