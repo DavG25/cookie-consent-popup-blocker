@@ -1,4 +1,6 @@
+import { getManifestDotDomainFromHostname, getHostnameFromUrl } from '../helpers/hostname';
 import { cookieHeaderToCookieObject, cookieObjectToCookieHeader } from '../helpers/cookie';
+import { manifestUrls } from '../store/domains';
 
 export default function register(chrome, state) {
   /**
@@ -14,12 +16,12 @@ export default function register(chrome, state) {
         /**
          * Stop if the cookie domain does not match the current request domain
          */
-        const currentDomain = getRootDomain(getHostnameFromUrl(details.url));
-        const matchingDomainIndex = cookie.validDomains.findIndex(
-          (domain) => domain.match(currentDomain),
+        const currentHostname = getHostnameFromUrl(details.url);
+        const currentDotDomain = getManifestDotDomainFromHostname(currentHostname);
+        const matchingDomain = cookie.validDomains.find(
+          (domain) => domain === currentDotDomain,
         );
-        const matchingDomain = cookie.validDomains[matchingDomainIndex];
-        if (matchingDomainIndex === -1) return;
+        if (matchingDomain === undefined) return;
 
         /**
          * Find the 'Cookie' header index
@@ -110,7 +112,7 @@ export default function register(chrome, state) {
      * Filter
      */
     {
-      urls: state.manifestUrls,
+      urls: manifestUrls,
       types: ['main_frame'],
     },
     /**

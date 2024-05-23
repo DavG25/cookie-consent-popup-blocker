@@ -1,6 +1,4 @@
-import {
-  googleDomains, youtubeDomains, manifestUrls,
-} from './domains';
+import { googleDotDomains, youtubeDotDomains } from './domains';
 import { expirationDate } from '../helpers/cookie';
 
 /**
@@ -10,7 +8,7 @@ export default {
   browser: chrome.app ? 'chrome' : 'firefox',
   cookies: [
     {
-      validDomains: googleDomains, // Array of domains compatible with this cookie
+      validDomains: googleDotDomains, // Array of domains compatible with this cookie
       validRegex: /^C.*/, // Regex to check against to consider the cookie valid
       name: 'SOCS',
       value: 'CAESHAgBEhJnd3NfMjAyNDA1MDgtMF9SQzEaAmVuIAEaBgiA04qyBg', // Equals to 'Reject all'
@@ -21,7 +19,7 @@ export default {
       secure: true,
     },
     {
-      validDomains: youtubeDomains, // Array of domains compatible with this cookie
+      validDomains: youtubeDotDomains, // Array of domains compatible with this cookie
       validRegex: /^C.*/, // Regex to check against to consider the cookie valid
       name: 'SOCS',
       value: 'CAESEwgDEgk2MzMwNDEwMjQaAmVuIAEaBgiA04qyBg', // Equals to 'Reject all'
@@ -32,7 +30,6 @@ export default {
       secure: true,
     },
   ],
-  manifestUrls,
   // First session network delay in milliseconds, see explanation below for this setting
   networkDelay: 0,
   // Object with each request's data (request ID as key), used to share values between requests
