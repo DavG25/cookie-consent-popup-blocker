@@ -1,10 +1,10 @@
-import updateIcon from '../helpers/icon';
+import updateBadge from '../helpers/badge';
 
 /**
  * Register listener for permissions update event
  */
 export default function register() {
-  // Update icon when permissions update
-  chrome.permissions.onAdded.addListener(() => { updateIcon(); });
-  chrome.permissions.onRemoved.addListener(() => { updateIcon(); });
+  // Update badge when permissions update
+  chrome.permissions.onAdded.addListener(() => { updateBadge(); });
+  chrome.permissions.onRemoved.addListener(() => { updateBadge(); });
 }
