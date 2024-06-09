@@ -1,3 +1,4 @@
+import { Cookie } from '../helpers/cookie';
 import { getManifestDotDomainFromHostname, getHostnameFromUrl } from '../helpers/hostname';
 import { manifestUrls } from '../store/domains';
 
@@ -27,38 +28,25 @@ export default function register(chrome, state) {
         if (state.requests[details.requestId].validClientCookies.includes(cookie.name)) return;
 
         /**
-         * Create correct SameSite value for cookie header
-         */
-        const sameSiteValue = (() => {
-          switch (cookie.sameSite) {
-            case 'no_restriction':
-              return '; SameSite=None';
-            case 'lax':
-              return '; SameSite=Lax';
-            case 'strict':
-              return '; SameSite=Strict';
-            default:
-              return '';
-          }
-        })();
-
-        /**
          * Create new cookie
          */
-        const newCookie = `${cookie.name}=${cookie.value};`
-          + ` Domain=${matchingDomain};`
-          + ` Expires=${cookie.expirationDate};`
-          + ` Path=${cookie.path}`
-          + `${cookie.httpOnly ? '; HttpOnly' : ''}`
-          + `${sameSiteValue}`
-          + `${cookie.secure ? '; Secure' : ''}`;
+        const newCookie = new Cookie({
+          name: cookie.name,
+          value: cookie.value,
+          path: cookie.path,
+          domain: matchingDomain,
+          maxAge: cookie.maxAge,
+          secure: cookie.secure,
+          httpOnly: cookie.httpOnly,
+          sameSite: cookie.sameSite,
+        });
 
         /**
          * Create new header
          */
         const newHeader = {
           name: 'Set-Cookie',
-          value: newCookie,
+          value: newCookie.toString(),
         };
 
         /**

@@ -1,5 +1,5 @@
 import { googleDotDomains, youtubeDotDomains } from './domains';
-import { expirationDate } from '../helpers/cookie';
+import { generateCookieMaxAge } from '../helpers/cookie';
 
 /**
  * Build state
@@ -12,10 +12,10 @@ export default {
       validRegex: /^C.*/, // Regex to check against to consider the cookie valid
       name: 'SOCS',
       value: 'CAESHAgBEhJnd3NfMjAyNDA1MDgtMF9SQzEaAmVuIAEaBgiA04qyBg', // Equals to 'Reject all'
-      expirationDate,
+      maxAge: generateCookieMaxAge(395),
       httpOnly: false,
       path: '/',
-      sameSite: 'lax',
+      sameSite: 'Lax',
       secure: true,
     },
     {
@@ -23,10 +23,10 @@ export default {
       validRegex: /^C.*/, // Regex to check against to consider the cookie valid
       name: 'SOCS',
       value: 'CAESEwgDEgk2MzMwNDEwMjQaAmVuIAEaBgiA04qyBg', // Equals to 'Reject all'
-      expirationDate,
+      maxAge: generateCookieMaxAge(395),
       httpOnly: false,
       path: '/',
-      sameSite: 'lax',
+      sameSite: 'Lax',
       secure: true,
     },
   ],
