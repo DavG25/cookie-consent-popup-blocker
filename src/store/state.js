@@ -11,7 +11,7 @@ export default {
       validDomains: googleDotDomains, // Array of domains compatible with this cookie
       validRegex: /^C.*/, // Regex to check against to consider the cookie valid
       name: 'SOCS',
-      value: 'CAESHAgBEhJnd3NfMjAyNDA1MDgtMF9SQzEaAmVuIAEaBgiA04qyBg', // Equals to 'Reject all'
+      value: 'CAESHAgBEhJnd3NfMjAyNTA1MjctMF9SQzEaAmVuIAEaBgiA6uPBBg', // Equals to 'Reject all'
       maxAge: generateCookieMaxAge(395),
       httpOnly: false,
       path: '/',
@@ -22,7 +22,7 @@ export default {
       validDomains: youtubeDotDomains, // Array of domains compatible with this cookie
       validRegex: /^C.*/, // Regex to check against to consider the cookie valid
       name: 'SOCS',
-      value: 'CAESEwgDEgk2MzMwNDEwMjQaAmVuIAEaBgiA04qyBg', // Equals to 'Reject all'
+      value: 'CAESNQgDEitib3FfaWRlbnRpdHlmcm9udGVuZHVpc2VydmVyXzIwMjUwNTI3LjA3X3AwGgJlbiACGgYIgOrjwQY', // Equals to 'Reject all'
       maxAge: generateCookieMaxAge(395),
       httpOnly: false,
       path: '/',
