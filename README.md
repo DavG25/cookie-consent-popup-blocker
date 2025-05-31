@@ -22,7 +22,7 @@ The latest version of the extension can be installed from the [official site](ht
 
 # Build
 
-The extension was developed and compiled using Node.js version 20.9.0
+The extension was developed and compiled using Node.js version 20.16.0
 
 ## Setup
 Install dependencies
